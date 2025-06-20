@@ -1,7 +1,7 @@
-#define K1 79.7
-#define K2 7.07
-#define K3 0.79
-#define K4 0.25
+#define K1 53.53
+#define K2 4.33
+#define K3 0.38
+#define K4 0.23
 
 #include <VBCoreG4_arduino_system.h>
 #include <Wire.h>
