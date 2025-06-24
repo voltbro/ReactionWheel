@@ -12,9 +12,9 @@ Documentation for the motor driver and VBCore module https://voltbro.gitbook.io/
 #define pinNSLEEP PB3
 
 #define K_pa 53.53 //54.9062 
-#define K_pv 4.33 //7.3934
-#define K_ma 0.38 //0.008717 
-#define K_mv 0.23 //0.013016 
+#define K_pv 7.33 //7.3934
+#define K_ma 0.008 //0.008717 
+#define K_mv 0.023 //0.013016 
 #define K_stand_up 35.0
 
 HardwareTimer *timer_move = new HardwareTimer(TIM7);
@@ -139,19 +139,18 @@ void control(){
   E = c_vel*sq(pendulum_vel)+ E0*cos(pendulum_angle); // pendulum energy
 
   if (swing_up_flag){
-   if (abs(E-E0)<epsilon) { // if the energy difference is less than epsilon, we hold the unstable equilibrium state
+    if (abs(E - E0) < epsilon) { // if the energy difference is less than epsilon, we hold the unstable equilibrium state
       u = -(k_pa*pendulum_angle + k_pv*pendulum_vel + k_ma*motor_angle + k_mv*motor_velocity);   
-   }
-
-   else { // else we swing the pendulum
-    u = -k_balance*(E-E0)*sign(pendulum_vel);
-   }
-
-   if (u > 12) u = 12; // limit the voltage to 12 volts
-   else if (u < -12) u = -12;
+    }
+    else { // else we swing the pendulum
+      u = -k_balance*(E-E0)*sign(pendulum_vel);
+    }
   }
+  else if(stop_flag) u = -k_balance*(E+E0)*sign(pendulum_vel); //u = 0;
 
-  else if(stop_flag) u = 0;
+  if (u > 12) u = 12; // limit the voltage to 12 volts
+  else if (u < -12) u = -12;
+  
   motor.target = u;
 }
 
