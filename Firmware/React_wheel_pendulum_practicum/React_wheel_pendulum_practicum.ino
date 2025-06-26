@@ -13,11 +13,13 @@ Documentation for the motor driver: https://voltbro.gitbook.io/vbcores/vbcores-h
 #define PinSCL PC6       // SCL pin of the I2C bus on the motor driver
 #define PinNSLEEP PB3    // Pin for enabling/disabling the motor driver
 
-#define K_pa 53.53  // Coefficient for pendulum angle (used in stabilization)
-#define K_pv 7.33   // Coefficient for pendulum angular velocity
-#define K_ma 0.008  // Coefficient for motor angle (flywheel)
-#define K_mv 0.023  // Coefficient for motor angular velocity
-#define K_stand_up 35.0 // Coefficient for energy-based swing-up and braking
+// State Feedback Constants
+#define K_PA 53.53  // pendulum arm angle
+#define K_PV 7.33   // pendulum arm angular velocity
+#define K_MA 0.008  // reaction wheel angle
+#define K_MV 0.023  // reaction wheel angular velocity
+#define K_SWING_UP 35.0 // Coefficient for energy-based swing-up and braking
+#define EPSILON 0.16;   // Tolerance for switching control modes
 
 // Two hardware timers will call control functions periodically
 HardwareTimer *timer_move = new HardwareTimer(TIM7);
@@ -30,11 +32,12 @@ float offset;
 float angle_tmp;
 float u = 0;
 
-float k_pa = K_pa; // Coefficient for pendulum angle (state feedback)
-float k_pv = K_pv; // Coefficient for pendulum angular velocity
-float k_ma = K_ma; // Coefficient for motor angle
-float k_mv = K_mv; // Coefficient for motor angular velocity
-float k_balance = K_stand_up; // Coefficient for energy swing-up and braking
+// Feedback Coefficients
+float k_pa = K_PA; // pendulum arm angle
+float k_pv = K_PV; // pendulum arm angular velocity
+float k_ma = K_MA; // reaction wheel angle
+float k_mv = K_MV; // reaction wheel angular velocity
+float k_swing_up = K_SWING_UP; // Coefficient for energy swing-up and braking
 
 // Physical parameters of the system
 float M = 0.014;      // Mass of the pendulum
@@ -44,9 +47,9 @@ float J = M*l*l/3;    // Moment of inertia of the pendulum about its base
 float Jmr = 0.0003385;// Combined moment of inertia of motor and flywheel
 float g = 9.81;       // Gravitational acceleration
 
-float E0 = (M/2+m)*g*l; // Desired energy level (upright equilibrium position)
+float E_ref = (M/2+m)*g*l; // Desired energy level (upright equilibrium position)
 float E;
-float epsilon = 0.02;   // Tolerance for switching control modes
+float epsilon = EPSILON;   // Tolerance for switching control modes
 
 float c_vel = 0.5*(J+m*l*l+Jmr); // Constant used in energy calculation
 
@@ -147,21 +150,21 @@ void setup() {
 // Function to calculate control voltage for the motor
 void control(){
   calc_angle_vel(); // Get angles and velocities from sensors
-  E = c_vel*sq(pendulum_vel)+ E0*cos(pendulum_angle); // Compute pendulum energy
+  E = c_vel*sq(pendulum_vel)+ E_ref*cos(pendulum_angle); // Compute pendulum energy
 
   if (swing_up_flag){ // If user activated the pendulum
-    if (abs(E - E0) < epsilon) {
+    if (abs(E_ref - E) < epsilon) {
       // Stabilization around unstable equilibrium
       u = -(k_pa*pendulum_angle + k_pv*pendulum_vel + k_ma*motor_angle + k_mv*motor_velocity); 
     }
     else {
       // Energy-based swing-up control
-      u = -k_balance*(E-E0)*sign(pendulum_vel); 
+      u = k_swing_up * (E_ref - E) * sign(pendulum_vel); 
     }
   }
   else if(stop_flag) {
     // Braking mode
-    u = -k_balance*(E+E0)*sign(pendulum_vel);
+    u = k_swing_up * (-E_ref - E) * sign(pendulum_vel);
   }
 
   // Limit control voltage
