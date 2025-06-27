@@ -159,12 +159,12 @@ void control(){
     }
     else {
       // Energy-based swing-up control
-      u = k_swing_up * (E_ref - E) * sign(pendulum_vel); 
+      u = k_swing_up * (E_ref - E) * sign(-pendulum_vel * cos(pendulum_angle));//sign(pendulum_vel); 
     }
   }
   else if(stop_flag) {
     // Braking mode
-    u = k_swing_up * (-E_ref - E) * sign(pendulum_vel);
+    u = k_swing_up * (-E_ref - E) * sign(-pendulum_vel * cos(pendulum_angle));
   }
 
   // Limit control voltage
