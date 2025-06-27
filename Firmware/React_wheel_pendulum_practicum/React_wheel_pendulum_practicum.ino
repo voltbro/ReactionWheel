@@ -17,9 +17,9 @@ Documentation for the motor driver: https://voltbro.gitbook.io/vbcores/vbcores-h
 #define K_PA 53.53  // pendulum arm angle
 #define K_PV 7.33   // pendulum arm angular velocity
 #define K_MA 0.008  // reaction wheel angle
-#define K_MV 0.023  // reaction wheel angular velocity
+#define K_MV 0.043  // reaction wheel angular velocity
 #define K_SWING_UP 30.0 // Coefficient for energy-based swing-up and braking
-#define EPSILON 0.16;   // Tolerance for switching control modes
+#define EPSILON 2.0;//0.16;   // Tolerance for switching control modes
 
 // Two hardware timers will call control functions periodically
 HardwareTimer *timer_move = new HardwareTimer(TIM7);
@@ -202,7 +202,7 @@ void stop(){
   stop_flag = 1;
   swing_up_flag = 0;
   motor.move(0);
-  delay(1000);
+  delay(200);
 }
 
 // Start the pendulum: enable swing-up control
