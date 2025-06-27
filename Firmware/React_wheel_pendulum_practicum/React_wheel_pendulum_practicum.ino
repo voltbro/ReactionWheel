@@ -18,7 +18,7 @@ Documentation for the motor driver: https://voltbro.gitbook.io/vbcores/vbcores-h
 #define K_PV 7.33   // pendulum arm angular velocity
 #define K_MA 0.008  // reaction wheel angle
 #define K_MV 0.023  // reaction wheel angular velocity
-#define K_SWING_UP 35.0 // Coefficient for energy-based swing-up and braking
+#define K_SWING_UP 30.0 // Coefficient for energy-based swing-up and braking
 #define EPSILON 0.16;   // Tolerance for switching control modes
 
 // Two hardware timers will call control functions periodically
@@ -30,7 +30,7 @@ int stop_flag = 0, swing_up_flag = 0;
 
 float offset;
 float angle_tmp;
-float u = 0;
+float u = 0.0;
 
 // Feedback Coefficients
 float k_pa = K_PA; // pendulum arm angle
@@ -63,8 +63,8 @@ AMS_5600 pendulum_sensor; // Pendulum sensor over I2C
 float sensitivity = 45.0;
 InlineCurrentSense current_sense = InlineCurrentSense(sensitivity, PC1, PC2, PC3);  
 
-// Create motor object: 7 pole pairs, 12.2 Ohm resistance, 238 KV
-BLDCMotor motor = BLDCMotor(7, 12.2, 238);
+// Create motor object: 7 pole pairs, 12.2 Ohm resistance
+BLDCMotor motor = BLDCMotor(7, 12.2);
 
 // Create driver object with 3-phase PWM pins
 BLDCDriver3PWM driver = BLDCDriver3PWM(PA8, PA9, PA10);
@@ -209,7 +209,8 @@ void stop(){
 void start(){
   stop_flag = 0;
   swing_up_flag = 1;
-  delay(1000);
+  motor.move(1);
+  delay(500);
 }
 
 // Main loop: handles button state and calls control logic
