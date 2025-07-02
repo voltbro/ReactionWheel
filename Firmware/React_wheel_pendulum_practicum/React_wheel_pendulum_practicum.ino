@@ -14,12 +14,11 @@ Documentation for the motor driver: https://voltbro.gitbook.io/vbcores/vbcores-h
 #define PinNSLEEP PB3    // Pin for enabling/disabling the motor driver
 
 // State Feedback Constants
-#define K_PA 53.53  // pendulum arm angle
-#define K_PV 7.33   // pendulum arm angular velocity
-#define K_MA 0.008  // reaction wheel angle
-#define K_MV 0.043  // reaction wheel angular velocity
-#define K_SWING_UP 30.0 // Coefficient for energy-based swing-up and braking
-#define EPSILON 2.0;//0.16;   // Tolerance for switching control modes
+#define K_PA 53.53  // k1 - pendulum arm angle
+#define K_PV 7.33   // k2 - pendulum arm angular velocity
+#define K_MV 0.043  // k3 - reaction wheel angular velocity
+#define K_SWING_UP 30.0 // k -Coefficient for energy-based swing-up and braking
+#define EPSILON 0.16;   // Tolerance for switching control modes
 
 // Two hardware timers will call control functions periodically
 HardwareTimer *timer_move = new HardwareTimer(TIM7);
@@ -35,14 +34,13 @@ float u = 0.0;
 // Feedback Coefficients
 float k_pa = K_PA; // pendulum arm angle
 float k_pv = K_PV; // pendulum arm angular velocity
-float k_ma = K_MA; // reaction wheel angle
 float k_mv = K_MV; // reaction wheel angular velocity
 float k_swing_up = K_SWING_UP; // Coefficient for energy swing-up and braking
 
 // Physical parameters of the system
-float M = 0.014;      // Mass of the pendulum
-float l = 0.12;       // Length of the pendulum
-float m = 0.063;      // Mass of the motor + flywheel
+float M = 0.1975; //0.014;      // Mass of the pendulum
+float l = 0.06;       // Length of the pendulum
+float m = 0.2545; //0.063;      // Mass of the motor + flywheel
 float J = M*l*l/3;    // Moment of inertia of the pendulum about its base
 float Jmr = 0.0003385;// Combined moment of inertia of motor and flywheel
 float g = 9.81;       // Gravitational acceleration
@@ -106,9 +104,9 @@ void setup() {
   motor.torque_controller = TorqueControlType::voltage; 
   motor.controller = MotionControlType::torque;
 
-  motor.current_limit = 5;
+  motor.current_limit = 50;
   motor.voltage_limit = 16;
-  motor.velocity_limit = 500; 
+  motor.velocity_limit = 5000; 
   motor.init();
   motor.initFOC();
   motor.target = 0;
@@ -155,7 +153,7 @@ void control(){
   if (swing_up_flag){ // If user activated the pendulum
     if (abs(E_ref - E) < epsilon) {
       // Stabilization around unstable equilibrium
-      u = -(k_pa*pendulum_angle + k_pv*pendulum_vel + k_ma*motor_angle + k_mv*motor_velocity); 
+      u = -(k_pa*pendulum_angle + k_pv*pendulum_vel + k_mv*motor_velocity); 
     }
     else {
       // Energy-based swing-up control
