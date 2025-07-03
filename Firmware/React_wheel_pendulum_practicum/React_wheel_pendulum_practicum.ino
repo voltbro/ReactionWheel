@@ -14,10 +14,10 @@ Documentation for the motor driver: https://voltbro.gitbook.io/vbcores/vbcores-h
 #define PinNSLEEP PB3    // Pin for enabling/disabling the motor driver
 
 // State Feedback Constants
-#define K_PA 53.53  // k1 - pendulum arm angle
-#define K_PV 7.33   // k2 - pendulum arm angular velocity
-#define K_MV 0.043  // k3 - reaction wheel angular velocity
-#define K_SWING_UP 30.0 // k -Coefficient for energy-based swing-up and braking
+#define K_PA -53.53  // k1 - pendulum arm angle
+#define K_PV -7.33   // k2 - pendulum arm angular velocity
+#define K_MV -0.043  // k3 - reaction wheel angular velocity
+#define K_SWING_UP 35.0 // k -Coefficient for energy-based swing-up and braking
 #define EPSILON 0.16;   // Tolerance for switching control modes
 
 // Two hardware timers will call control functions periodically
@@ -157,19 +157,19 @@ void control(){
     }
     else {
       // Energy-based swing-up control
-      u = k_swing_up * (E_ref - E) * sign(-pendulum_vel * cos(pendulum_angle));//sign(pendulum_vel); 
+      u = k_swing_up * (E_ref - E) * sign(pendulum_vel * cos(pendulum_angle));// sign(pendulum_vel);  //
     }
   }
   else if(stop_flag) {
     // Braking mode
-    u = k_swing_up * (-E_ref - E) * sign(-pendulum_vel * cos(pendulum_angle));
+    u = k_swing_up * (-E_ref - E) * sign(pendulum_vel * cos(pendulum_angle));
   }
 
   // Limit control voltage
   if (u > 12) u = 12;
   else if (u < -12) u = -12;
   
-  motor.target = u; // Apply control voltage to the motor
+  motor.target = -u; // Apply control voltage to the motor
 }
 
 // Function to compute pendulum and motor angles and velocities
