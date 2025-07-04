@@ -12,7 +12,7 @@
    - Запустите мастер установки и следуйте инструкциям на экране. Когда вы дойдете до страницы *Advance Installation Options* отметьте все предлагаемые пункты галочками, несмотря на возможное появление предупреждений.
 
       <!-- ![](Pictures/inst_guide_1.PNG =100x20) -->
-      <img src="Pictures/inst_guide_1.PNG" height="300">
+      <img src="Pictures/inst_guide_1.png" height="300">
 
    - Нажмите кнопку *Install* и дождитесь окончания установки.
 1. **Установите необходимые Python-библиотеки** 
@@ -32,7 +32,7 @@
    - Нажмите кнопку *Run All*. Если при выполнении снизу отобразился график переходного процесса, то вы всё сделали правильно.
 
    <!-- ![](Pictures/inst_guide_2.PNG){height="200px"} -->
-   <img src="Pictures/inst_guide_2.PNG" height="300">
+   <img src="Pictures/inst_guide_2.png" height="300">
 
 ## Ubuntu
 1. **Установите VSCode:**
