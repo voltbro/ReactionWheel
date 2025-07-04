@@ -160,15 +160,15 @@
 
    - Откройте среду разработки *Arduino IDE*, перейдите в меню *File -> Preferences*. 
 
-      <!-- ![](Pictures/stm32duino3.PNG){height="200px"} -->
-      <img src="Pictures/stm32duino3.PNG" height="300">
+      <!-- ![](Pictures/stm32duino3.png){height="200px"} -->
+      <img src="Pictures/stm32duino3.png" height="300">
 
    - В области текстового поля *Additional Boards Manager URLs* вам нужно добавить URL пакета поддержки аппаратных средств *STM32DUINO*. Если у вас уже есть другие URL-адреса пакетов поддержки плат, просто добавьте новый через запятую. Ссылка, которую нужно вставить: 
 
       https://github.com/stm32duino/BoardManagerFiles/raw/main/package\_stmicroelectronics\_index.json
 
-     <!-- ![](Pictures/stm32duino4.PNG){height="200px"} -->
-     <img src="Pictures/stm32duino4.PNG" height="300">
+     <!-- ![](Pictures/stm32duino4.png){height="200px"} -->
+     <img src="Pictures/stm32duino4.png" height="300">
 
    - Нажмите кнопку *ОК*.
    - В главном окне программы выберите меню *Инструменты (Tools) → Плата (Board) → Менеджер плат (Boards manager)*. В появившемся окне впишите в поле поиска *STM32*, должен появиться пакет *STM32 MCU based boards*. Нажмите кнопку *Установить*. По окончании установки закройте окно менеджера плат.
@@ -178,28 +178,28 @@
 
    - Укажите серию платы. Для этого выберите пункт меню *Tools -> Board -> STM32 MCU based boards -> GenericSTM32G4 series*.
 
-      <!-- ![](Pictures/stm32duino5.PNG){height="200px"} -->
-      <img src="Pictures/stm32duino5.PNG" height="300">
+      <!-- ![](Pictures/stm32duino5.png){height="200px"} -->
+      <img src="Pictures/stm32duino5.png" height="300">
 
    - Убедитесь, что эта же модель у вас отображается в списке плат, на которую вы собираетесь устанавливать прошивку.
 
-      <!-- ![](Pictures/stm32duino6.PNG){height="200px"} -->
-      <img src="Pictures/stm32duino6.PNG" height="300">
+      <!-- ![](Pictures/stm32duino6.png){height="200px"} -->
+      <img src="Pictures/stm32duino6.png" height="300">
 
    - Если в списке плат вы не нашли нужную вам, то кликните на стрелку внизу и выберите *Select Other Board and Port*. Укажите необходимые названия и нажмите *OK*.
 
-      <!-- ![](Pictures/stm32duino7.PNG){height="200px"} -->
-      <img src="Pictures/stm32duino7.PNG" height="200">
+      <!-- ![](Pictures/stm32duino7.png){height="200px"} -->
+      <img src="Pictures/stm32duino7.png" height="200">
 
    - Выберите обозначение платы: *Tools → Board part number → Generic G474RETx*
 
-      <!-- ![](Pictures/stm32duino8.PNG){height="200px"} -->
-      <img src="Pictures/stm32duino8.PNG" height="300">
+      <!-- ![](Pictures/stm32duino8.png){height="200px"} -->
+      <img src="Pictures/stm32duino8.png" height="300">
 
    - Укажите метод загрузки: *Tools → Upload method → STM32CubeProgrammer (SWD)*
 
-      <!-- ![](Pictures/stm32duino9.PNG){height="200px"} -->
-      <img src="Pictures/stm32duino9.PNG" height="300">
+      <!-- ![](Pictures/stm32duino9.png){height="200px"} -->
+      <img src="Pictures/stm32duino9.png" height="300">
 
    - Чтобы программы, написанные под Arduino IDE, корректно работали на плате VBCore VB32G4, нужно установить библиотеку VBCoreG4\_arduino\_system, в которой собраны функции настройки частот, инициализации CAN и конфигурации некоторых других параметров. Скачать её можно по ссылке https://github.com/VBCores/VBCoreG4\_arduino\_system. Скопируйте папку VBCoreG4\_arduino\_system в директорию, где хранятся библиотеки для Arduino. Чаще всего эта директория имеет адрес C:\Program Files (x86)\Arduino\libraries или C:\Users\username\Documents\Arduino\libraries, однако у вас место положение библиотек может отличаться. 
 
