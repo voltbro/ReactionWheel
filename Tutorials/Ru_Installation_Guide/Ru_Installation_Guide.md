@@ -11,7 +11,7 @@
    - Перейдите по ссылке <https://www.anaconda.com/download/success> и выберите для скачивания *Miniconda Installer*
    - Запустите мастер установки и следуйте инструкциям на экране. Когда вы дойдете до страницы *Advance Installation Options* отметьте все предлагаемые пункты галочками, несмотря на возможное появление предупреждений.
 
-      ![](../Pictures/inst_guide_1.png){height="300px"}
+      ![](../Pictures/inst_guide_1.png){height="200px"}
 
    - Нажмите кнопку *Install* и дождитесь окончания установки.
 1. **Установите необходимые Python-библиотеки** 
@@ -30,7 +30,7 @@
    - Нажмите *Select Kernel* в правой верхней части окна и выберите *Select Another Kernel → Python Environments → base (Python 3.13.2)*
    - Нажмите кнопку *Run All*. Если при выполнении снизу отобразился график переходного процесса, то вы всё сделали правильно.
 
-   ![](../Pictures/inst_guide_2.png){height="300px"}
+   ![](../Pictures/inst_guide_2.png){height="200px"}
 
 ## Ubuntu
 1. **Установите VSCode:**
@@ -63,23 +63,23 @@
    - На своем компьютере перейдите в папку, куда вы скачали файл установки и запустите его.
    - При запуске появится окно установщика. Прочитайте лицензионное соглашение и нажмите кнопку Принимаю, если вы с ним согласны:
 
-     ![](../Pictures/arduino_install_1.PNG){height="300px"}
+     ![](../Pictures/arduino_install_1.PNG){height="200px"}
 
    - Выберите пункт *Только для меня*, а затем *Далее*:
 
-     ![](../Pictures/arduino_install_2.PNG){height="300px"}
+     ![](../Pictures/arduino_install_2.PNG){height="200px"}
 
    - Если вы не хотите устанавливать программу по адресу, указанному по умолчанию, нажмите кнопку *Обзор* и выберите новый адрес. Затем нажмите кнопку *Установить*:
 
-     ![](../Pictures/arduino_install_3.PNG){height="300px"}
+     ![](../Pictures/arduino_install_3.PNG){height="200px"}
 
    - Дождитесь завершения установки:
 
-     ![](../Pictures/arduino_install_4.PNG){height="300px"}
+     ![](../Pictures/arduino_install_4.PNG){height="200px"}
 
    - Снимите галочку *Запустить Arduino IDE* и нажмите кнопку *Готово*:
 
-     ![](../Pictures/arduino_install_5.PNG){height="300px"}
+     ![](../Pictures/arduino_install_5.PNG){height="200px"}
 1. **Установите STM32CubeProg**
    Для прошивки модулей требуется программатор. Чтобы Arduino IDE смогла с ним работать, нам понадобится утилита STM32CubeProg. Это универсальная программа, содержащая всё необходимое для прошивки микроконтроллеров STM32. Она позволяет прошивать их, используя различные интерфейсы. Чтобы установить её проделайте следующие операции:
 
@@ -90,64 +90,64 @@
    - Программа требует права администратора. При запуске вы можете увидеть окно *Разрешить приложению вносить изменения на вашем устройстве?*. Согласитесь, нажав кнопку *Да*.
    - В открывшемся окне мастера установки нажмите кнопку *Next*:
 
-      ![](../Pictures/cubeprog_install_1.PNG){height="300px"}
+      ![](../Pictures/cubeprog_install_1.PNG){height="200px"}
 
    - Ознакомьтесь с содержимой информацией по установке и нажмите *Next*:
 
-      ![](../Pictures/cubeprog_install_2.PNG){height="300px"}
+      ![](../Pictures/cubeprog_install_2.PNG){height="200px"}
 
    - Ознакомьтесь с лицензионным соглашением и, если вы с ним согласны, то выберите пункт *I accept the terms of this license agreement*, затем нажмите *Next*:
 
-      ![](../Pictures/cubeprog_install_3.PNG){height="300px"}
+      ![](../Pictures/cubeprog_install_3.PNG){height="200px"}
 
    - Выберите адрес установки нажатием кнопки *Browse* и затем снова *Next*:
 
-      ![](../Pictures/cubeprog_install_4.PNG){height="300px"}
+      ![](../Pictures/cubeprog_install_4.PNG){height="200px"}
 
    - Если такой папки не существует, то появится окно:
 
-      ![](../Pictures/cubeprog_install_5.PNG){height="300px"}
+      ![](../Pictures/cubeprog_install_5.PNG){height="200px"}
 
       Согласитесь, нажав *OK*
 
    - Поставьте галочку рядом с пунктом *I have read and understand…* и затем *Next*:
 
-      ![](../Pictures/cubeprog_install_6.PNG){height="300px"}
+      ![](../Pictures/cubeprog_install_6.PNG){height="200px"}
 
    - Убедитесь, что выделены все пункты и нажмите *Next*:
 
-      ![](../Pictures/cubeprog_install_7.PNG){height="300px"}
+      ![](../Pictures/cubeprog_install_7.PNG){height="200px"}
 
    - Начнется установка пакета. В процессе установки появится мастер установки драйверов устройств:
 
-      ![](../Pictures/cubeprog_install_8.PNG){height="300px"} 
+      ![](../Pictures/cubeprog_install_8.PNG){height="200px"} 
 
       Нажмите *Далее → Установить*. После завершения установки драйвера, нажмите кнопку *Готово*.
 
    - Когда установка STM32CubeProg завершится, нажмите *Next*:
 
-      ![](../Pictures/cubeprog_install_9.PNG){height="300px"}
+      ![](../Pictures/cubeprog_install_9.PNG){height="200px"}
 
    - Снимите галочки напротив всех пунктов и нажмите *Next*:
 
-      ![](../Pictures/cubeprog_install_10.PNG){height="300px"}
+      ![](../Pictures/cubeprog_install_10.PNG){height="200px"}
 
    - Нажмите кнопку *Done*, чтобы завершить установку:
 
-      ![](../Pictures/cubeprog_install_11.PNG){height="300px"}
+      ![](../Pictures/cubeprog_install_11.PNG){height="200px"}
 
 1. **Установите библиотеку STM32duino**
    Ключом к взаимодействию *Arduino IDE* и микроконтроллеров семейства STM32 является библиотека *STM32duino*. Для ее установки в *Arduino IDE* сделайте следующее:
 
    - Откройте среду разработки *Arduino IDE*, перейдите в меню *File -> Preferences*. 
 
-      ![](../Pictures/stm32duino3.png){height="300px"}
+      ![](../Pictures/stm32duino3.png){height="200px"}
 
    - В области текстового поля *Additional Boards Manager URLs* вам нужно добавить URL пакета поддержки аппаратных средств *STM32DUINO*. Если у вас уже есть другие URL-адреса пакетов поддержки плат, просто добавьте новый через запятую. Ссылка, которую нужно вставить: 
 
       https://github.com/stm32duino/BoardManagerFiles/raw/main/package\_stmicroelectronics\_index.json
 
-     ![](../Pictures/stm32duino4.png){height="300px"}
+     ![](../Pictures/stm32duino4.png){height="200px"}
 
    - Нажмите кнопку *ОК*.
    - В главном окне программы выберите меню *Инструменты (Tools) → Плата (Board) → Менеджер плат (Boards manager)*. В появившемся окне впишите в поле поиска *STM32*, должен появиться пакет *STM32 MCU based boards*. Нажмите кнопку *Установить*. По окончании установки закройте окно менеджера плат.
@@ -157,23 +157,23 @@
 
    - Укажите серию платы. Для этого выберите пункт меню *Tools -> Board -> STM32 MCU based boards -> GenericSTM32G4 series*.
 
-      ![](../Pictures/stm32duino5.png){height="300px"}
+      ![](../Pictures/stm32duino5.png){height="200px"}
 
    - Убедитесь, что эта же модель у вас отображается в списке плат, на которую вы собираетесь устанавливать прошивку.
 
-      ![](../Pictures/stm32duino6.png){height="300px"}
+      ![](../Pictures/stm32duino6.png){height="200px"}
 
    - Если в списке плат вы не нашли нужную вам, то кликните на стрелку внизу и выберите *Select Other Board and Port*. Укажите необходимые названия и нажмите *OK*.
 
-      ![](../Pictures/stm32duino7.png){height="300px"}
+      ![](../Pictures/stm32duino7.png){height="200px"}
 
    - Выберите обозначение платы: *Tools → Board part number → Generic G474RETx*
 
-      ![](../Pictures/stm32duino8.png){height="300px"}
+      ![](../Pictures/stm32duino8.png){height="200px"}
 
    - Укажите метод загрузки: *Tools → Upload method → STM32CubeProgrammer (SWD)*
 
-      ![](../Pictures/stm32duino9.png){height="300px"}
+      ![](../Pictures/stm32duino9.png){height="200px"}
 
    - Чтобы программы, написанные под Arduino IDE, корректно работали на плате VBCore VB32G4, нужно установить библиотеку VBCoreG4\_arduino\_system, в которой собраны функции настройки частот, инициализации CAN и конфигурации некоторых других параметров. Скачать её можно по ссылке https://github.com/VBCores/VBCoreG4\_arduino\_system. Скопируйте папку VBCoreG4\_arduino\_system в директорию, где хранятся библиотеки для Arduino. Чаще всего эта директория имеет адрес C:\Program Files (x86)\Arduino\libraries или C:\Users\username\Documents\Arduino\libraries, однако у вас место положение библиотек может отличаться. 
 
@@ -193,3 +193,4 @@
 
 
 [ref1]: Aspose.Words.1cc374a5-84bc-4e77-9cff-f06863e60d99.020.png
+[pic_height]: height="100px"
