@@ -1,5 +1,5 @@
 slprj/
-Tutorials/Pictures/
+# Tutorials/Pictures/
 *.asv
 *.r2022a
 *.slxc
