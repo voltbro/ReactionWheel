@@ -171,10 +171,13 @@ x_1 = -L_1 \dot{\theta} \sin \theta;\quad   y_1 = L_1 \dot{\theta} \cos \theta;\
 \tag{3}
 $$
 
-$
+$$
 x_2 = -L_2 \dot{\theta} \sin \theta;\quad   y_2 = L_2 \dot{\theta} \cos \theta;   \alpha_2 = \dot{\theta} + \dot{\phi}.
 \tag{4}
-$
+$$
+
+\( x_2 = -L_2 \dot{\theta} \sin \theta;\quad y_2 = L_2 \dot{\theta} \cos \theta;\quad \alpha_2 = \dot{\theta} + \dot{\phi} \)
+
 
 Выражение $α_2 = \dot{θ} + \dot{ϕ}$ получено согласно *теореме о сложении скоростей*, которая звучит так:
 
