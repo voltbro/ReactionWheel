@@ -31,7 +31,7 @@
    - Нажмите *Select Kernel* в правой верхней части окна и выберите *Select Another Kernel → Python Environments → base (Python 3.13.2)*
    - Нажмите кнопку *Run All*. Если при выполнении снизу отобразился график переходного процесса, то вы всё сделали правильно.
 
-   ![](../Pictures/inst_guide_2.png){height="200px"}
+   ![](../Pictures/inst_guide_2.png){height="200"}
 
 ## Ubuntu
 1. **Установите VSCode:**
